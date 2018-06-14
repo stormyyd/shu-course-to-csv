@@ -1,5 +1,5 @@
-import requests
 import lxml.html
+import requests
 
 VALIDATE_CODE_URL = 'http://xk.shu.edu.cn:{0}/Login/GetValidateCode'
 LOGIN_URL = 'http://xk.shu.edu.cn:{0}'

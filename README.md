@@ -12,7 +12,7 @@
 git clone https://github.com/stormyyd/shu-course-to-csv.git
 cd shu-course-to-csv
 pip3 install -r requirements.txt
-python3 to_csv.py ...
+python3 convert.py ...
 ```
 
 对于 Windows 用户，建议在 [这里](https://github.com/stormyyd/shu-course-to-csv/releases) 下载制作好的二进制文件直接使用。或者使用上述方法。
@@ -22,12 +22,12 @@ python3 to_csv.py ...
 代码采用 Python 3 编写，在运行在 WSL 上的 Python 3.5.2 中工作正常，不保证低版本兼容性。
 
 ```
-usage: to_csv.py [-h] -u USERNAME -p PASSWORD [-P PORT] [-w WEEKS]
-                 [-f FIRST_DAY]
-                 csv_filename
+usage: convert.py [-h] -u USERNAME -p PASSWORD [-P PORT] [-w WEEKS]
+                  [-f FIRST_DAY] [-t TYPE]
+                  filename
 
 positional arguments:
-  csv_filename          csv文件名
+  filename              文件名
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -35,7 +35,7 @@ optional arguments:
                         学生证号码
   -p PASSWORD, --password PASSWORD
                         学生证密码
-  -P PORT, --port PORT  该学期选课网站的端口，80或8080，默认为80
+  -P PORT, --port PORT  该学期选课网站的端口，80或8080，默认为80。
   -w WEEKS, --weeks WEEKS
                         该学期的周数，普通学期为 10，夏季短学期为
                         2，我没有报名国际化小学期并不知道是什么流程，
@@ -43,21 +43,22 @@ optional arguments:
   -f FIRST_DAY, --first-day FIRST_DAY
                         该学期的第一天，输入格式类似于 2018-06-18。
                         默认为本周周一。
+  -t TYPE, --type TYPE  导出文件的类型，csv或ics。默认为csv。
 ```
 
 ### 几个例子
 
-    python3 to_csv.py -u 学号 -p 密码 课表.csv
+    python3 convert.py -u 学号 -p 密码 课表.csv
 
 以本周周一为该学期第一天，学校选课网站端口为80，该学期周数为10（即普通学期）来生成课表，生成的文件为该目录下的 课表.csv 文件。
 
-    python3 to_csv.py -u 学号 -p 密码 -P 8080 课表.csv
+    python3 convert.py -u 学号 -p 密码 -P 8080 课表.csv
 
 以本周周一为该学期第一天，学校选课网站端口为8080，该学期周数为10（即普通学期）来生成课表，生成的文件为该目录下的 课表.csv 文件。
 
-    python3 to_csv.py -u 学号 -p 密码 -w 2 -f 2016-06-18 课表.csv
+    python3 convert.py -u 学号 -p 密码 -w 2 -f 2016-06-18 -t ics 课表.ics
 
-以2018年6月18日为该学期第一天，学校选课网站端口为8080，该学期周数为2（即夏季短学期）来生成课表，生成的文件为该目录下的 课表.csv 文件。
+以2018年6月18日为该学期第一天，学校选课网站端口为8080，该学期周数为2（即夏季短学期）来生成课表，生成的文件为该目录下的 课表.ics 文件。
 
 ## 程序结构
 

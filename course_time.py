@@ -49,7 +49,7 @@ def detect(time_str: str, first_day: datetime.date =None, weeks: int =10) -> lis
     if(not first_day):
         today = datetime.date.today()
         first_day = today - datetime.timedelta(today.weekday())
-    if(not first_day.weekday()):
+    if(first_day.weekday() != 0):
         first_day = first_day - datetime.timedelta(first_day.weekday())
     time_list = list()
     for i in PATTERN.finditer(time_str):
