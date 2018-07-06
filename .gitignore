@@ -1,6 +1,8 @@
 venv/
+venv_release/
 __pycache__/
 .vscode/
+.idea/
 build/
 dist/
 *.spec

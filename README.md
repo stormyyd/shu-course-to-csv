@@ -6,20 +6,46 @@
 
 ## 安装
 
-对于 Linux、OS X、WSL 用户，使用 git 将代码库克隆到任意目录，安装依赖后直接使用 to_csv.py 即可（见 [用法](#用法)）。
+使用 git 将代码库克隆到任意目录，安装依赖后直接使用 convert.py 即可（见 [用法](#用法)）。
 
-```
+强烈建议使用 [venv](https://docs.python.org/3.6/library/venv.html) 创建虚拟环境，与系统的 Python 库隔离。
+
+不使用 venv，对所有操作系统适用：
+
+```bash
 git clone https://github.com/stormyyd/shu-course-to-csv.git
 cd shu-course-to-csv
 pip3 install -r requirements.txt
 python3 convert.py ...
 ```
 
-对于 Windows 用户，建议在 [这里](https://github.com/stormyyd/shu-course-to-csv/releases) 下载制作好的二进制文件直接使用。或者使用上述方法。
+非 Windows 下使用 venv：
+
+```bash
+git clone https://github.com/stormyyd/shu-course-to-csv.git
+cd shu-course-to-csv
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+python3 convert.py ...
+```
+
+Windows 下使用 venv：
+
+```bash
+git clone https://github.com/stormyyd/shu-course-to-csv.git
+cd shu-course-to-csv
+python3 -m venv venv
+venv\Scripts\activate.bat
+pip3 install -r requirements.txt
+python3 convert.py ...
+```
+
+另外，对于 64-bit Windows 用户，强烈建议在 [这里](https://github.com/stormyyd/shu-course-to-csv/releases) 下载制作好的二进制文件直接使用。32-bit 的因为没有环境，懒得弄了，用上面的方法吧。
 
 ## 用法
 
-代码采用 Python 3 编写，在运行在 WSL 上的 Python 3.5.2 中工作正常，不保证低版本兼容性。
+代码采用 Python 3 编写，在运行在 WSL 上的 Python 3.5.2 及 Windows 上的 Python 3.6.5 中工作正常，不保证低版本 Python 的兼容性。
 
 ```
 usage: convert.py [-h] -u USERNAME -p PASSWORD [-P PORT] [-w WEEKS]
