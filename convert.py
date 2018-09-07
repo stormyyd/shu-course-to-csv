@@ -25,7 +25,7 @@ def convert(username: str, password: str, filename: str, type_: str = 'csv', por
                 time_list = detect(i['time'], first_day=first_day, weeks=weeks)
                 row = {
                     'Subject': i['name'],
-                    'Description': '教师：{0}'.format(i['teacher']),
+                    'Description': '教师：{0}\n{1}'.format(i['teacher'], i['time']),
                     'Location': i['location']
                 }
                 for j in time_list:
@@ -44,7 +44,7 @@ def convert(username: str, password: str, filename: str, type_: str = 'csv', por
                     name=i['name'],
                     begin=arrow.get(j['start_time'], 'Asia/Shanghai'),
                     end=arrow.get(j['end_time'], 'Asia/Shanghai'),
-                    description='教师：{0}'.format(i['teacher']),
+                    description='教师：{0}\n{1}'.format(i['teacher'], i['time']),
                     location=i['location']
                 )
                 c.events.add(e)
