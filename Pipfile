@@ -1,17 +1,19 @@
 [[source]]
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
+requests = ">=2.20.0"
 ics = "*"
 lxml = "*"
+cssselect = "*"
 
 [dev-packages]
-requests = "*"
+requests = ">=2.20.0"
 ics = "*"
 lxml = "*"
+cssselect = "*"
 pyinstaller = "*"
 
 [requires]

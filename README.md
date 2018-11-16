@@ -1,7 +1,7 @@
 # 将上大课表导出为 csv 或 ics 日历文件
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg)
-![](https://img.shields.io/badge/version-0.0.4-519dd9.svg)
+![](https://img.shields.io/badge/version-0.0.5-519dd9.svg)
 ![](https://img.shields.io/badge/license-WTFPL-000000.svg)
 
 ----------------------------------------------------------------------
@@ -64,16 +64,6 @@ optional arguments:
     python convert.py -u 学号 -p 密码 -w 2 -f 2018-06-18 -t ics 课表.ics
 
 以 2018年6月18日 为该学期第一天，学校选课网站端口为80，该学期周数为2（即夏季短学期）来生成课表，生成的文件为该目录下的 课表.ics 文件。
-
-程序结构
-------
-
-get_course.py 用于模拟登录选课网站以获取课表，验证码识别来自 [shuopensourcecommunity/anti-captcha.shuosc.org
-](https://github.com/shuopensourcecommunity/anti-captcha.shuosc.org)。
-
-course_time.py 将上课时间字符串如“四11-13”、“二9-10(1-5)周”转换为程序可识别的 datetime 对象，核心为正则表达式。
-
-convert.py 用于调用以上两个文件声明的函数并用于生成 csv 或 ics 文件，并提供了一个简单的命令行交互界面。
 
 已知可能存在的问题
 ---------------

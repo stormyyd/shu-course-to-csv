@@ -5,24 +5,24 @@ import os
 import arrow
 from ics import Calendar, Event
 
-from course_time import detect
-from get_course import get_course
+from shu import SHU
 
 
-def convert(username: str, password: str, filename: str, type_: str = 'csv', port: int = 80, weeks: int = 10,
-            first_day: datetime.date = None) -> None:
+def convert(username, password, filename, type_='csv', port=80, weeks=10, first_day=None):
     if os.path.isfile(filename):
         print('File {0} already exists. Overwrite it? <y/N> '.format(filename), end='')
         if input().lower() != 'y':
             return
-    courses_list = get_course(username, password, port)
+    shu = SHU(username=username, password=password, port=port, weeks=weeks, first_day=first_day)
+    shu.login()
+    courses_list = shu.get_course()
     if type_ == 'csv':
         with open(filename, 'w', newline='') as f:
             fieldnames = ['Subject', 'Start Date', 'Start Time', 'End Date', 'End Time', 'Description', 'Location']
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for i in courses_list:
-                time_list = detect(i['time'], first_day=first_day, weeks=weeks)
+                time_list = shu.detect(i['time'])
                 row = {
                     'Subject': i['name'],
                     'Description': '教师：{0}\n{1}'.format(i['teacher'], i['time']),
@@ -38,7 +38,7 @@ def convert(username: str, password: str, filename: str, type_: str = 'csv', por
     if type_ == 'ics':
         c = Calendar()
         for i in courses_list:
-            time_list = detect(i['time'], first_day=first_day, weeks=weeks)
+            time_list = shu.detect(i['time'])
             for j in time_list:
                 e = Event(
                     name=i['name'],
