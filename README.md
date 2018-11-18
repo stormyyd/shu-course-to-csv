@@ -1,7 +1,7 @@
 # 将上大课表导出为 csv 或 ics 日历文件
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg)
-![](https://img.shields.io/badge/version-0.0.5-519dd9.svg)
+![](https://img.shields.io/badge/version-0.0.6-519dd9.svg)
 ![](https://img.shields.io/badge/license-WTFPL-000000.svg)
 
 ----------------------------------------------------------------------
@@ -69,3 +69,7 @@ optional arguments:
 ---------------
 
 不知道选课系统会不会冒出一些对上课时间奇怪的描述，目前已知且该程序可以处理的对上课时间的描述收录在 [known_time_string.csv](https://github.com/stormyyd/shu-course-to-csv/blob/master/known_time_string.csv) 中。如果你遇到了该程序不能处理的或未收录在上述文件中的类型欢迎在 Issue 中提出，提出时请务必附上选课界面的图片。
+
+TODO
+----
+- 移除 ics.py 依赖

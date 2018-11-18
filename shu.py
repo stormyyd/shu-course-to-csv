@@ -16,7 +16,7 @@ class SHU:
 
     __pattern = re.compile('(?P<weekday>[一二三四五])(?P<start_course>\d{1,2})-(?P<end_course>\d{1,2})'
                            '(?P<single>[单双\s])?(\s?\((?P<week_start>\d{1,2})(?P<type>[,-])'
-                           '(?P<week_end>\d{1,2})周\)|\(第(?P<week>\d)周\))?')
+                           '(?P<week_end>\d{1,2})周\w*\)|\(第(?P<week>\d)周\))?')
     __a_week = datetime.timedelta(7)
     __start_time_map = {
         1: datetime.time(hour=8, minute=0),
